@@ -10,17 +10,15 @@ class TodoInput extends React.Component {
     };
   }
 
-  // state = {
-  //   value: ""
-  // };
-
   handleChange = e => {
     this.setState({ value: e.target.value });
   };
 
-  addToDo(todo) {
-    console.log("TODO: ", todo);
-  }
+  addToDo = todo => {
+    this.props.addToDo(todo);
+    // console.log("TODO: ", todo);
+  };
+
   render() {
     return (
       <div>
