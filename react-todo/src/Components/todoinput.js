@@ -5,15 +5,18 @@ class TodoInput extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { value: "test" };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.addToDo = this.addToDo.bind(this);
+    this.state = {
+      value: ""
+    };
   }
 
-  handleChange() {
-    console.log("change here");
-  }
+  // state = {
+  //   value: ""
+  // };
+
+  handleChange = e => {
+    this.setState({ value: e.target.value });
+  };
 
   addToDo(todo) {
     console.log("TODO: ", todo);
@@ -23,7 +26,7 @@ class TodoInput extends React.Component {
       <div>
         <input
           type="text"
-          value=""
+          value={this.state.value}
           onChange={this.handleChange}
           placeholder="Enter a task here"
         />
