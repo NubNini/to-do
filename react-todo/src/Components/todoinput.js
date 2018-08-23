@@ -14,21 +14,29 @@ class TodoInput extends React.Component {
     this.setState({ value: e.target.value });
   };
 
+  handleKeyPress = target => {
+    if (target.charCode === 13) {
+      console.log("hi");
+      this.addToDo(this.state.value);
+    }
+  };
+
   addToDo = todo => {
     this.props.addToDo(todo);
-    // console.log("TODO: ", todo);
+    this.setState({ value: "" });
   };
 
   render() {
     return (
       <div>
         <input
+          onKeyPress={this.handleKeyPress}
           type="text"
           value={this.state.value}
           onChange={this.handleChange}
           placeholder="Enter a task here"
         />
-        <button onClick={() => this.addToDo(this.state)}>Add</button>
+        <button onClick={() => this.addToDo(this.state.value)}>Add</button>
       </div>
     );
   }
